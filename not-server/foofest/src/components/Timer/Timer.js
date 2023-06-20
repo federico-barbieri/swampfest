@@ -6,21 +6,25 @@ function Timer() {
 
   const globalMoneyContext = useContext(TicketsContext);
 
- // const [seconds, setSeconds] = useState(10 * 60);  // 10 minutes in seconds
- 
- const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(10);  // 10 minutes in seconds
+  globalMoneyContext.setTimeLeft(seconds);
+
 
   useEffect(() => {
     // Decrease the timer every second
     const timer = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
+      setSeconds((prevSeconds) => {
+      const newSeconds = prevSeconds - 1;
+      globalMoneyContext.setTimeLeft(newSeconds);
+      console.log(globalMoneyContext.timeLeft);
+      return newSeconds;
+      });
     }, 1000);
 
-    globalMoneyContext.setTimeLeft(seconds);
 
     // Clean up the timer when the component is unmounted or seconds reach 0
     return () => clearInterval(timer);
-  }, [seconds]);
+  }, []);
 
   // Convert remaining seconds to minutes and seconds
   const minutes = Math.floor(seconds / 60);

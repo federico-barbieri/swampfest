@@ -331,8 +331,8 @@ function checkout() {
                 user.city == "" ||
                 user.country == "" ||
                 user.email == "" ||
-                user.phone == "" 
-
+                user.phone == "" || 
+                globalMoneyContext.timeLeft == 0
                   ? true
                   : false
               }

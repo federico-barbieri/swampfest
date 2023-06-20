@@ -320,3 +320,82 @@
     height: fit-content;
   }
 }
+
+
+.form {
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem 2rem;
+  font-size: 1.125rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.selectTickets {
+  width: fit-content;
+}
+
+.h3 {
+  font-weight: 700;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: flex-start;
+  padding: 0 0.5rem;
+}
+
+.nameContainer,
+.emailContainer {
+  width: 100%;
+}
+
+/* .radioAlign {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: space-around;
+  width: 100%;
+} */
+
+.fullNameLabel,
+.emailLabel {
+  margin-bottom: 0.125rem;
+  font-size: 1rem;
+}
+
+.fullName,
+.email {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+@media (min-width: 421px) and (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .form {
+    height: 16rem;
+  }
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: flex-start;
+    padding: 0 0.5rem;
+  }
+}

@@ -175,7 +175,7 @@ function index() {
           <Link href="/buyingStage/success">
             <button
               className={law.nextButton}
-              disabled={isCheckboxChecked ? false : true}
+              disabled={isCheckboxChecked || globalMoneyContext.timeLeft !== 0 ? false : true}
               onClick={sendInformationToDatabase}
             >
               PLACE ORDER

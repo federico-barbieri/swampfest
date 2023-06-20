@@ -286,7 +286,7 @@ function nilfheim() {
           <Link href="/buyingStage/campingAddOns" onClick={checkAvailability}>
             <button
               className={law.nextButton}
-              disabled={globalMoneyContext.howManyTickets == 0 ? true : false}
+              disabled={globalMoneyContext.howManyTickets == 0 || globalMoneyContext.timeLeft == 0 ? true : false}
             >
               NEXT STEP
             </button>

@@ -12,11 +12,13 @@ import { DiMozilla } from "react-icons/di";
 const BottomNav = () => {
 
   const globalStuff = useContext(TicketsContext)
+
+  console.log(globalStuff.timeLeft)
   
   return (
     <div className={law.footContainer}>
       <div className={law.timer}>
-        {globalStuff.howManyTickets === 0 ? "" : (globalStuff.timeLeft !== 0 ? <Timer /> : <p>This session has expired. Please try again</p>)}
+        {globalStuff.howManyTickets === 0 ? "" : (globalStuff.timeLeft !== 0 ? <Timer /> : <p>This session has expired. Please refresh the page.</p>)}
         </div>
       <div className={law.bottomNav}>
         

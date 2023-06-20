@@ -318,7 +318,7 @@ function campingAddOns() {
           <Link href="/buyingStage/ticketHolderInfo">
             <button
               className={law.nextButton}
-              disabled={numOfTents == 0 ? true : false}
+              disabled={numOfTents == 0 || globalMoneyContext.timeLeft == 0 ? true : false}
             >
               NEXT STEP
             </button>

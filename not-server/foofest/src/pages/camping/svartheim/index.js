@@ -3,7 +3,6 @@ import { useEffect, useState, useContext } from "react";
 
 import law from "../camping.module.css";
 
-import Timer from "../../../components/Timer/Timer"
 
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 
@@ -302,7 +301,7 @@ function svartheim() {
           <Link href="/buyingStage/campingAddOns" onClick={checkAvailability}>
             <button
               className={law.nextButton}
-              disabled={globalMoneyContext.howManyTickets == 0 ? true : false}
+              disabled={globalMoneyContext.howManyTickets == 0 || globalMoneyContext.timeLeft == 0 ? true : false}
             >
               NEXT STEP
             </button>

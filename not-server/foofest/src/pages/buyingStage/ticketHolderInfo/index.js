@@ -69,19 +69,40 @@ function ticketHolderInfo() {
 
             {cardStorage.map((el) => {
               return (
-                <div
-                  className={law.cardsContainer}
-                  key={cardStorage.indexOf(el) + 1}
-                >
-                  <TicketHolderCard
-                    num={cardStorage.indexOf(el) + 1}
-                    getName={retrieveHolderInfoName}
-                    getEmail={retrieveHolderInfoEmail}
-                  />
-                </div>
+                <form className={law.cardsContainer} key={cardStorage.indexOf(el) + 1}>
+
+                    <h3 className={law.h3}>Ticket no. {cardStorage.indexOf(el) + 1}</h3>
+
+                    <div className={law.inputContainer}>
+                      <div className={law.nameContainer}>
+                        <label className={law.fullNameLabel}>Full name</label>
+                        <input
+                          
+                          id="fullname"
+                          className={law.fullName}
+                          placeholder="Miss Fiona Charming"
+                          required
+                          onBlur={() => getName(num, nameInput.current.value)}
+                        />
+                      </div>
+
+                      <div className={law.emailContainer}>
+                        <label className={law.emailLabel}>Email</label>
+                        <input
+                          
+                          id="email"
+                          className={law.email}
+                          placeholder="fiona@charming.com"
+                          required
+                          onBlur={() => getEmail(num, emailInput.current.value)}
+                        />
+                      </div>
+                    </div>
+                  </form>
+
               );
             })}
-            {/* </div> */}
+
           </div>
         </div>
       </div>
@@ -134,7 +155,7 @@ function ticketHolderInfo() {
             <button
               className={law.nextButton}
               disabled={
-                formEmail.length === 0 || formName.length === 0 ? true : false
+                formEmail.length === 0 || formName.length === 0 || globalMoneyContext.timeLeft == 0 ? true : false
               }
             >
               NEXT STEP
