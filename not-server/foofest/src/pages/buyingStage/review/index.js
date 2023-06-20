@@ -38,6 +38,10 @@ function index() {
   //
 
   async function sendInformationToDatabase() {
+
+    // hide timer
+    globalMoneyContext.setHideTimer(true);
+
     const payload = {
       id: `${globalMoneyContext.globalReservationId}`,
     };

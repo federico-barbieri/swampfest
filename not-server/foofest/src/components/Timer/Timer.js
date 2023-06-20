@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from "./Timer.module.css"
+import TicketsContext from '../../context/ticketsContext';
 
 function Timer() {
-  const [seconds, setSeconds] = useState(10 * 60); // 10 minutes in seconds
+
+  const globalMoneyContext = useContext(TicketsContext);
+
+ // const [seconds, setSeconds] = useState(10 * 60);  // 10 minutes in seconds
+ 
+ const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
     // Decrease the timer every second
@@ -10,20 +16,28 @@ function Timer() {
       setSeconds((prevSeconds) => prevSeconds - 1);
     }, 1000);
 
+    globalMoneyContext.setTimeLeft(seconds);
+
     // Clean up the timer when the component is unmounted or seconds reach 0
     return () => clearInterval(timer);
-  }, []);
+  }, [seconds]);
 
   // Convert remaining seconds to minutes and seconds
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
   return (
-    <div className={styles.timer}>
-      {minutes}:{remainingSeconds < 10 ? '0' : ''}
-      {remainingSeconds}
+    <div className={styles.timer} style={{display: globalMoneyContext.hideTimer ? "none" : "inline"}}>
+   
+     {minutes}:{remainingSeconds < 10 ? '0' : ''}
+      {remainingSeconds} 
+      
+   
     </div>
   );
 }
 
 export default Timer;
+
+// create a global variable and set it to false. when the ticket purchase is done, set it to true.
+// if it is true, set the timer to display none

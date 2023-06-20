@@ -16,7 +16,7 @@ const BottomNav = () => {
   return (
     <div className={law.footContainer}>
       <div className={law.timer}>
-        {globalStuff.howManyTickets === 0 ? "" : <Timer />}
+        {globalStuff.howManyTickets === 0 ? "" : (globalStuff.timeLeft !== 0 ? <Timer /> : <p>This session has expired. Please try again</p>)}
         </div>
       <div className={law.bottomNav}>
         

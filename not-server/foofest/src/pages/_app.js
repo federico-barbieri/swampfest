@@ -38,6 +38,12 @@ export default function App({ Component, pageProps }) {
   // store timer
   const [globalTimer, setGlobalTimer] = useState(null);
 
+  // display timer | do not display it 
+  const [hideTimer, setHideTimer] = useState(false);
+
+  // how much time is left
+  const [timeLeft, setTimeLeft] = useState(null);
+
   return (
     <>
       <TicketsContext.Provider
@@ -62,6 +68,10 @@ export default function App({ Component, pageProps }) {
           setDeliveryObject,
           globalReservationId,
           setGlobalReservationId,
+          hideTimer,
+          setHideTimer,
+          timeLeft,
+          setTimeLeft,
         }}
       >
         <Layout>
