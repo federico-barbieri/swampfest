@@ -44,6 +44,9 @@ export default function App({ Component, pageProps }) {
   // how much time is left
   const [timeLeft, setTimeLeft] = useState(null);
 
+  // store full names 
+  const [globalFullNames, setGlobalFullNames] = useState([]);
+
   return (
     <>
       <TicketsContext.Provider
@@ -72,6 +75,8 @@ export default function App({ Component, pageProps }) {
           setHideTimer,
           timeLeft,
           setTimeLeft,
+          globalFullNames,
+          setGlobalFullNames
         }}
       >
         <Layout>

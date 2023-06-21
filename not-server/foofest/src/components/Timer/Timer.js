@@ -6,7 +6,7 @@ function Timer() {
 
   const globalMoneyContext = useContext(TicketsContext);
 
-  const [seconds, setSeconds] = useState(10);  // 10 minutes in seconds
+  const [seconds, setSeconds] = useState(600);  // 10 minutes in seconds
   globalMoneyContext.setTimeLeft(seconds);
 
 
@@ -16,7 +16,6 @@ function Timer() {
       setSeconds((prevSeconds) => {
       const newSeconds = prevSeconds - 1;
       globalMoneyContext.setTimeLeft(newSeconds);
-      console.log(globalMoneyContext.timeLeft);
       return newSeconds;
       });
     }, 1000);

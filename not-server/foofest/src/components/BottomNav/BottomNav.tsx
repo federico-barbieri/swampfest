@@ -13,7 +13,6 @@ const BottomNav = () => {
 
   const globalStuff = useContext(TicketsContext)
 
-  console.log(globalStuff.timeLeft)
   
   return (
     <div className={law.footContainer}>

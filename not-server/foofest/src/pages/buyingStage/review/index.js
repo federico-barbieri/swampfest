@@ -76,8 +76,9 @@ function index() {
     const { data, error } = await supabase.from("swampfest").insert({
       reservation_id: globalMoneyContext.globalReservationId,
       number_of_tickets: globalMoneyContext.howManyTickets,
-      people: globalMoneyContext.globalFormName,
-      email: globalMoneyContext.globalFormEmail,
+      people: globalMoneyContext.globalFullNames,
+   //   people: globalMoneyContext.globalFormName,
+   //   email: globalMoneyContext.globalFormEmail,
       delivery: globalMoneyContext.deliveryObject,
       camp: globalMoneyContext.selectedCamp,
       amount: globalMoneyContext.ticketsPlusTents + globalMoneyContext.globalVat + 99 + 24

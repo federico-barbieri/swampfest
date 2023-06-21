@@ -1,7 +1,7 @@
 import TicketHolderCard from "../../../components/TicketHolderCard/TicketHolderCard";
 import React from "react";
 import TicketsContext from "../../../context/ticketsContext";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import law from "./ticketHolderInfo.module.css";
 
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
@@ -12,6 +12,13 @@ import { Bs3Circle, Bs4Circle, Bs5Circle, BsCheckCircle } from "react-icons/bs";
 import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function ticketHolderInfo() {
+
+  // create an empty array of refs
+  const refs = useRef([]);
+
+  const [storeNames, setStoreNames] = useState([])
+
+
   // grab local info of ticket holders
 
   const [formName, setFormName] = useState([]);
@@ -52,6 +59,71 @@ function ticketHolderInfo() {
 
   // cry
 
+  // we create a function that maps through the empty array and creates a ref for each form
+  // we create
+
+
+  const renderInputs = () => {
+    return myArrayWithSlots.map((item, index) => {
+      const inputRef = useRef(null); // Create a new ref for each input
+      refs.current[index] = inputRef; // Store the ref in the inputRefs array
+  
+      return (
+
+
+
+        <form className={law.cardsContainer} key={myArrayWithSlots.indexOf(item) + 1}>
+
+        <h3 className={law.h3}>Ticket no. {myArrayWithSlots.indexOf(item) + 1}</h3>
+
+        <div className={law.inputContainer}>
+          <div className={law.nameContainer}>
+            <label className={law.fullNameLabel}>Full name</label>
+            <input
+              key={index}
+              ref={inputRef}
+              id="fullname"
+              className={law.fullName}
+              placeholder="Fiona Charming"
+              required
+              onChange={() => consoleMe(inputRef.current.value)}
+            />
+          </div>
+
+  
+        </div>
+
+       
+      </form>
+
+      );
+    });
+  };
+
+function consoleMe(value){
+  console.log(value);
+}
+
+
+function storeFullNames(){
+
+  const newStoreNames = refs.current.map((el) => ({
+    Person: el.current.index,
+    name: el.current.value
+  }));
+
+  setStoreNames((prevStoreNames) => [...prevStoreNames, ...newStoreNames]);
+
+
+}
+
+
+useEffect(() => {
+  globalTicketInfo.setGlobalFullNames(storeNames);
+}, [storeNames]);
+
+
+
   return (
     <BuyFlowLayout>
       <div className={law.contentAndBasket}>
@@ -67,6 +139,13 @@ function ticketHolderInfo() {
 
           <div className={law.addContainer}>
 
+              
+
+
+          {renderInputs()}
+
+
+          {/* 
             {cardStorage.map((el) => {
               return (
                 <form className={law.cardsContainer} key={cardStorage.indexOf(el) + 1}>
@@ -102,6 +181,7 @@ function ticketHolderInfo() {
 
               );
             })}
+            */}
 
           </div>
         </div>
@@ -155,8 +235,9 @@ function ticketHolderInfo() {
             <button
               className={law.nextButton}
               disabled={
-                formEmail.length === 0 || formName.length === 0 || globalMoneyContext.timeLeft == 0 ? true : false
+                 globalTicketInfo.timeLeft !== 0 ? false : true
               }
+             onClick={storeFullNames} 
             >
               NEXT STEP
             </button>
