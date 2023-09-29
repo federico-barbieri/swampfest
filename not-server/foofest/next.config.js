@@ -9,8 +9,8 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-      //  hostname: 'fierce-veiled-exception.glitch.me',
-      hostname: 'localhost:8080',
+        hostname: 'fierce-veiled-exception.glitch.me',
+     // hostname: 'localhost:8080',
       },
     ],
   }
